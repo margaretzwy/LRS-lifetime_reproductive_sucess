@@ -20,12 +20,13 @@ testrun <- function(max.offspring){
   pvec_env1 <- Pmatrix # normal spring
   pvec_env2 <- Pmatrix %*% env_effect_p # early spring
   Pmatrix_env <- rbind(pvec_env1, pvec_env2)
-  Klist_env <- Klist # set list structure
+  Klist_env <- Glist_env <- Klist # set list structure
   for (i in seq_len(omega)) {
+    Glist_env[[i]] <- kronecker(diag(2), Glist[[i]]) ### Transition is the same for both environments
     Klist_env[[i]] <- cbind(Klist[[i]], Klist[[i]]) ### fertility is the same for both environments
   }
   gamma <- lrs_with_diff_evntrans(D,
-                                  Glist,
+                                  Glist_env,
                                   Klist_env,
                                   Pmatrix_env,
                                   max.offspring)
