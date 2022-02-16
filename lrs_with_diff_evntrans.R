@@ -19,9 +19,9 @@ lrs_with_diff_evntrans <- function(D,
     Glist_env_tran <- list(Glist_env[[1]] %*% Phat)
   }
   ### Calculate LRS distribution ####
-  gamma_evn <- block_matrices_solve(Klist_env,
-                                    Glist_env_tran,
-                                    Pmatrix_env,
+  gamma_evn <- block_matrices_solve(Klist = Klist_env,
+                                    Glist = Glist_env_tran,
+                                    Pmatrix = Pmatrix_env,
                                     stage_per_age = n.stage,
                                     initial.age = 1,
                                     end.age = 1,
